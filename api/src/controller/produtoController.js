@@ -54,35 +54,6 @@ endpoints.put('/produtos/:id/poster', upload.single('capa'), async (req, resp) =
     }
 })
 
-endpoints.get('/produtos', async (req, resp) => {
-    try {
-
-        const response = await ConsultAllProducts()
-
-        resp.send(response)
-
-    } catch (err) {
-        resp.status(404).send({
-            erro: err.message
-        })
-    }
-})
-endpoints.get('/produtos', async (req, resp) => {
-    try {
-
-        const request = req.query.request ?? '';
-
-        const response = await ConsultarPorNome(request)
-
-        resp.send(response)
-
-    } catch (err) {
-        resp.status(404).send({
-            erro: err.message
-        })
-    }
-})
-
 endpoints.get('/produtos/:id', async (req, resp) => {
     try {
 
@@ -98,6 +69,39 @@ endpoints.get('/produtos/:id', async (req, resp) => {
         })
     }
 })
+
+endpoints.get('/produtos', async (req, resp) => {
+    try {
+
+        const request = req.query.nome  ;
+
+        const response = await ConsultarPorNome(request)
+
+        resp.send(response)
+
+    } catch (err) {
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+})
+
+endpoints.get('/admin/produtos', async (req, resp) => {
+    try {
+
+        const response = await ConsultAllProducts()
+
+        resp.send(response)
+
+    } catch (err) {
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+})
+
+
+
 
 endpoints.post('/produtos/favoritar', async (req, resp) => {
     try {

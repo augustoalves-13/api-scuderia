@@ -37,3 +37,52 @@ export async function UserRegister(user){
     return user
 
 }
+
+export async function ListUser(){
+    const command = 
+    `
+    select id_cliente   id,
+        nm_cliente      cliente,
+        nr_telefone     telefone,
+        ds_cpf          cpf,
+        ds_email        email
+    from tb_cliente
+    `
+
+    const [lines] = await con.query(command)
+
+    return lines
+}
+
+export async function ListFromId(id){
+    const command = 
+    `
+    select id_cliente   id,
+        nm_cliente      cliente,
+        nr_telefone     telefone,
+        ds_cpf          cpf,
+        ds_email        email
+    from tb_cliente
+    where id_cliente =  ?   
+    `
+
+    const [lines] = await con.query(command , [id]) 
+    return lines
+    
+}
+
+export async function ListUserFromName(name){
+    const command = 
+    `
+    select id_cliente   id,
+        nm_cliente      cliente,
+        nr_telefone     telefone,
+        ds_cpf          cpf,
+        ds_email        email
+    from tb_cliente
+    where nm_cliente  =  ?
+    `
+
+    const lines = await con.query(command , `%${name}%`)
+    return lines
+}

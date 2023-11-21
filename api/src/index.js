@@ -22,4 +22,4 @@ server.use(enderecoController)
 server.use(marcasController)
 
 server.listen(process.env.MYSQL_PORT , 
-            ()=>console.log("API ONLINE"))
+            () => console.log("API ONLINE"))

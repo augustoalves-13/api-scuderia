@@ -52,7 +52,7 @@ export async function ConsultarPorNome(nome) {
 
     console.log(lines)
 
-    return lines[0]
+    return lines
 }
 
 export async function ConsultAllProducts() {
@@ -77,21 +77,13 @@ export async function ListProductsFromId(id) {
     const command =
 
         `
-    select id_produtos	    id,
-            id_marca 	    id,
-            nm_modelo	    nome,
-            vl_valor	    valor,
-            vl_avaliacao	avaliacao,
-            bl_situacao		situacao,
-            img_banner      img,
-            ds_descricao    descricao
-    from  tb_produtos
+    select * from  tb_produtos
     where id_produtos   = ?            
     `
 
     const [lines] = await con.query(command , [id])
 
-    return lines
+    return lines[0]
 
 }
 
