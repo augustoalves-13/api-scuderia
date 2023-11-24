@@ -39,9 +39,10 @@ export async function ConsultarPorNome(nome) {
     const comando =
         `
     select id_produtos	id,
-		id_marca 	marca,
-        nm_modelo	nome,
-        vl_valor	valor,
+		id_marca 	    marca,
+        nm_modelo	    nome,
+        vl_valor	    valor,
+        img_banner	    img,
         vl_avaliacao	avaliacao,
         bl_situacao		situacao
 	from tb_produtos
@@ -62,6 +63,7 @@ export async function ConsultAllProducts() {
         id_marca 	id,
         nm_modelo	nome,
         vl_valor	valor,
+        img_banner	    img,
         vl_avaliacao	avaliacao,
         bl_situacao		situacao
     from tb_produtos

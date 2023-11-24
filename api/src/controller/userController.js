@@ -28,6 +28,19 @@ endpoints.post('/user/cadastro' , async(req,resp)=>{
 
         const request = req.body
 
+        if(!request.nome)
+            throw new Error('Informe seu nome completo')
+
+        if(!request.cpf || request.cpf.length < 11)
+                throw new Error("CPF Inválido")
+
+        if(!request.email)
+            throw new Error('Informe seu E-mail')
+
+        if(!request.senha || request.senha.length < 8)
+            throw new Error('A senha deve conter no mínimo 8 caracteres')
+
+
         const response = await UserRegister(request)
 
         resp.send(response)

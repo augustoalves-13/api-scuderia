@@ -25,7 +25,7 @@ endpoints.post('/user/:id/endereco', async(req,resp) => {
         const id = req.params.id
         const endereco = req.body
 
-        const res = await Save(id, endereco)
+        const response = await Save(id, endereco)
 
         resp.status(204).send()
         

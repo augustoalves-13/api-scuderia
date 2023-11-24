@@ -23,7 +23,7 @@ export async function Save(idUser , endereco){
     const command = 
     `
     insert into tb_usuario_endereco(id_usuario, ds_ref, ds_cep, ds_logradouro, ds_bairro, ds_cidade, ds_estado, ds_numero, ds_complemento)
-    values(?,?, ?,?,?,?,?,?,?)
+    values(?,?,?,?,?,?,?,?,?)
     `
 
     const [reps] = await con.query(command, [idUser, endereco.ref , endereco.cep , endereco.logradouro , endereco.bairro , endereco.cidade , endereco.estado , endereco.numero , endereco.complemento])
